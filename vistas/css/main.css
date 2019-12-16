@@ -1,0 +1,57 @@
+
+@import url('./sweetalert2.css');
+
+/*============ Area de notificaciones*/
+.Notifications-area{
+	height: 100%;
+	position: fixed;
+	z-index: 99;
+	transition: all .3s ease-in-out;
+	overflow: hidden;
+	opacity: 0;
+	pointer-events: none;
+}
+.Notifications-bg,
+.Notifications-body{
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.Notifications-bg{
+	z-index: 1;
+	background-color: rgba(0, 0, 0, .7);
+}
+.Notifications-body{
+	z-index: 2;
+	background-color: #FFF;
+	width: 100%;
+	max-width: 300px;
+	transform: translateX(300px);
+	transition: all .3s ease-in-out;
+}
+.Notifications-body-title,
+.Notifications-body-title > i{
+	height: 50px;
+	line-height: 50px;
+	font-size: 20px;
+}
+.Notifications-body-title{
+	background-color: #FF5722;
+	color: #fff;
+	position: relative;
+}
+.Notifications-body-title > i{
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	width: 50px;
+}
+.show-Notification-area{
+	opacity: 1 !important;
+	pointer-events: auto !important;
+}
+.show-Notification-area > .Notifications-body{
+	transform: translateX(0) !important;
+}
