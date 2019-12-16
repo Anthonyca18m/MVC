@@ -132,6 +132,135 @@
                         })
                     </script>
                 ";
+            }elseif ($datos["Alert"] == "AlertLoader") {
+                $alerta="
+                <script>
+                    let timerInterval
+                    Swal.fire({
+                    title: '".$datos["Titulo"]."',
+                    html: '".$datos["Texto"]."',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                        Swal.getContent().querySelector('b')
+                            .textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                    }).then((result) => {
+                    if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.timer
+                    ) {
+                        console.log('Estaba cerrado por el temporizador') // eslint-disable-line
+                    }
+                    })
+                </script>
+                ";
+            }elseif ($datos["Alert"] == "AlertIP") {
+                $alerta = "
+                    <script>
+                        const ipAPI = '//api.ipify.org?format=json'
+
+                        Swal.queue([{
+                        title: 'Tu IP es',
+                        confirmButtonText: 'Ver mi IP',
+                        text:
+                            'Tu IP pública es ' +
+                            '',
+                        showLoaderOnConfirm: true,
+                        preConfirm: () => {
+                            return fetch(ipAPI)
+                            .then(response => response.json())
+                            .then(data => Swal.insertQueueStep(data.ip))
+                            .catch(() => {
+                                Swal.insertQueueStep({
+                                icon: 'error',
+                                title: 'No se puede obtener su IP pública'
+                                })
+                            })
+                        }
+                        }])
+                    </script>
+                ";
+            }elseif ($datos["Alert"] == "AlertQuestion") {
+                $alerta = "
+                    <script>
+                    Swal.fire({
+                        title: '".$datos["Titulo"]."',
+                        text: '".$datos["Texto"]."',
+                        icon: '".$datos["Tipo"]."',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '".$datos["TextoButtonConfirm"]."'
+                      }).then((result) => {
+                        if (result.value) {
+                          Swal.fire(
+                            '".$datos["TituloConfirm"]."',
+                            '".$datos["TextoConfirm"]."',
+                            '".$datos["TipoConfirm"]."'
+                          )
+                        }
+                      })
+                    </script>
+                ";
+            }elseif ($datos["Alert"] == "AlertQuestionResponse") {
+                $alerta ="
+                    <script>
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                          confirmButton: 'btn btn-success',
+                          cancelButton: 'btn btn-danger'
+                        },
+                        buttonsStyling: false
+                      })
+                      
+                      swalWithBootstrapButtons.fire({
+                        title: '".$datos["Titulo"]."',
+                        text: '".$datos["Texto"]."',
+                        icon: '".$datos["Tipo"]."',
+                        showCancelButton: true,
+                        confirmButtonText: '".$datos["TextoButtonConfirm"]."',
+                        cancelButtonText: '".$datos["TextoButtonCancel"]."',
+                        reverseButtons: true
+                      }).then((result) => {
+                        if (result.value) {
+                          swalWithBootstrapButtons.fire(
+                            '".$datos["TituloResponseConfirm"]."',
+                            '".$datos["TextoResponseConfirm"]."',
+                            '".$datos["TipoResponseConfirm"]."'
+                          )
+                        } else if (
+                          /* Read more about handling dismissals below */
+                          result.dismiss === Swal.DismissReason.cancel
+                        ) {
+                          swalWithBootstrapButtons.fire(
+                            '".$datos["TituloResponseCancel"]."',
+                            '".$datos["TextoResponseCancel"]."',
+                            '".$datos["TipoResponseCancel"]."'
+                          )
+                        }
+                      })
+                    </script>
+                ";
+            }elseif ($datos["Alert"] == "AlertImage") {
+                $alerta = "
+                    <script>
+                    Swal.fire({
+                        title: '".$datos["Titulo"]."',
+                        text: '".$datos["Texto"]."',
+                        imageUrl: '".$datos["Image"]."',
+                        imageWidth: ".$datos["ImageWidth"].",
+                        imageHeight: ".$datos["ImageHeight"].",
+                        imageAlt: '".$datos["ImagenAlt"]."',
+                      })
+                    </script>
+                ";
             }
         }
         
