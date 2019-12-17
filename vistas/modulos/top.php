@@ -4,7 +4,7 @@
     <div class="top_left">
         <div class="top_left_menu">
             <ul>
-                <li class="refresh"> <a href="javascript:void(0);"><i class="fa fa-repeat"></i></a> </li>
+                <li class="refresh"> <a href=""><i class="fa fa-repeat"></i></a> </li>
 
                 </a>
                 <ul class="drop_down_task dropdown-menu" style="margin-top:39px">
@@ -29,7 +29,7 @@
         <div class="top_right">
             <div class="top_right_menu">
                 <ul>
-                    <li class="dropdown"> <a href="javascript:void(0);" data-toggle="dropdown"> Tasks <span class="badge badge">8</span> </a>
+                    <li class="dropdown"> <a href="javascript:void(0);" data-toggle="dropdown"><i class="fa fa-bell faa-ring animated"></i> Notificaciones <span class="badge badge">8</span> </a>
                         <ul class="drop_down_task dropdown-menu">
                             <div class="top_pointer"></div>
                             <li>
@@ -52,10 +52,11 @@
         <div class="user_admin dropdown"> <a href="javascript:void(0);" data-toggle="dropdown"><img src="images/user.png" /><span class="user_adminname">John Doe</span> <b class="caret"></b> </a>
             <ul class="dropdown-menu">
                 <div class="top_pointer"></div>
-                <li> <a href="profile.html"><i class="fa fa-user"></i> Profile</a> </li>
-                <li> <a href="help.html"><i class="fa fa-question-circle"></i> Help</a> </li>
-                <li> <a href="settings.html"><i class="fa fa-cog"></i> Setting </a></li>
-                <li> <a href="login.html"><i class="fa fa-power-off"></i> Logout</a> </li>
+                <li> <a href="profile.html"><i class="fa fa-user"></i> Mi Perfil</a> </li>
+                <li> <a href="help.html"><i class="fa fa-book"></i> Manual</a> </li>
+                <li> <a href="settings.html"><i class="fa fa-cog"></i> Configuración </a></li>
+                <li> <a href="help.html"><i class="fa fa-question-circle"></i> Reportar</a> </li>
+                <li> <a href="login.html"><i class="fa fa-power-off"></i> Cerrar Sesión</a> </li>
             </ul>
         </div>
 

@@ -1,9 +1,3 @@
-<?php    
-    session_start();
-    $peticionAjax = false;
-?>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -16,15 +10,23 @@
 </head>
 
 <body class="light_theme  fixed_header left_nav_fixed">
-<?php  
+<?php    
+    
+    $peticionAjax = false;
+
 		require_once "./controladores/vistasControlador.php";
 
 		$vt = new vistasControlador();
 		$vistasR=$vt->obtener_vistas_controlador();
 
-		if($vistasR=="login"):
-			require_once "./vistas/contenidos/login-view.php";
-		else:
+        if($vistasR=="login" || $vistasR=="404"):
+            if ($vistasR=="login") {
+                require_once "./vistas/contenidos/login-view.php";
+            } else {
+                require_once "./vistas/contenidos/404-view.php";
+            }
+        else:
+            // session_start();
 	?>
     <div class="wrapper">
         <!--\\\\\\\ wrapper Start \\\\\\-->

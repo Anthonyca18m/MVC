@@ -1,7 +1,28 @@
 <?php 
 	class vistasModelo{
 		protected function obtener_vistas_modelo($vistas){
-			$listaBlanca=["adminlist","adminsearch","admin","book","bookconfig","bookinfo","catalog","category","categorylist","client","clientlist","clientsearch","company","companylist","home","myaccount","mydata","provider","providerlist","search"];
+			$listaBlanca=["404",
+							"backup",
+							"consultPrice",
+							"datosGenerales",
+							"historySesion",
+							"home",
+							"listAlmacen",
+							"listCategory",
+							"listProduct",
+							"listUsers",
+							"login",
+							"registerAlmacen",
+							"registerCategory",
+							"registerProduct",
+							"registerUsers",
+							"reportAlmacen",
+							"reportCategory",
+							"reportProduct",
+							"reportUsers",
+							"users",
+							"editProfile",
+							"profile"];
 			if(in_array($vistas, $listaBlanca)){
 				if(is_file("./vistas/contenidos/".$vistas."-view.php")){
 					$contenido="./vistas/contenidos/".$vistas."-view.php";
@@ -13,7 +34,7 @@
 			}elseif($vistas=="index"){
 				$contenido="login";
 			}else{
-				$contenido="login";
+				$contenido="404";
 			}
 			return $contenido;
 		}
