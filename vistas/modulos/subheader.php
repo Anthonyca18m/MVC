@@ -38,5 +38,5 @@
 <!--  Plugin Toastr -->
 <script src="<?php echo SERVERURL; ?>vistas/plugins/toastr/toastr.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/js/body_toast.js"></script>
-<script src="<?php echo SERVERURL; ?>vistas/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/main.js"></script>

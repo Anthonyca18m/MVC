@@ -23,7 +23,7 @@
                         <h3 class="content-header">Registrar Nuevo Usuario</h3>
                     </div>
                     <div class="porlets-content">
-                        <form class="form-horizontal group-border-dashed FormularioAjax" data-form="save" action="" method="POST" parsley-validate novalidate>
+                        <form class="form-horizontal group-border-dashed FormularioAjax" data-form="save" method="POST">
                             <div class="form-group" style="padding:1%;">
                                 <div class="col-sm-12">
                                     <label class="control-label text"><b>
@@ -174,3 +174,6 @@
     <!--\\\\\\\ container  end \\\\\\-->
 </div>
 <!--\\\\\\\ content panel end \\\\\\-->
+
+
+

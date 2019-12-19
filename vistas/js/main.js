@@ -68,7 +68,7 @@ $('.FormularioAjax').submit(function(e){
 	var metodo=form.attr('method');
 	var respuesta=form.children('.RespuestaAjax');
 
-	var msjError="<script>swal('Ocurrió un error inesperado','Por favor recargue la página','error');</script>";
+	var msjError="<script>swal.fire('Ocurrió un error inesperado','Por favor recargue la página','error');</script>";
 	var formdata = new FormData(this);
 
 
@@ -84,7 +84,7 @@ $('.FormularioAjax').submit(function(e){
 	}
 
 
-	swal({
+	swal.fire({
 		title: "¿Estás seguro?",   
 		text: textoAlerta,   
 		type: "question",   
