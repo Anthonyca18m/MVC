@@ -23,7 +23,7 @@
                         <h3 class="content-header">Registrar Nuevo Usuario</h3>
                     </div>
                     <div class="porlets-content">
-                        <form class="form-horizontal group-border-dashed FormularioAjax" data-form="save" method="POST">
+                        <form class="form-horizontal group-border-dashed FormularioAjax" data-form="save" method="POST" autocomplete="off" enctype="multipart/form-data">
                             <div class="form-group" style="padding:1%;">
                                 <div class="col-sm-12">
                                     <label class="control-label text"><b>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="control-label"><b>Genéro: *</b></label>
-                                    <select required  id="reg_genero" name="reg_genero" >
+                                    <select required id="reg_genero" name="reg_genero">
                                         <option value="">SELECCIONE GENÉRO</option>
                                         <option value="1">MUJER</option>
                                         <option value="2">HOMBRE</option>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="control-label"><b>Tipo de Documento: *</b></label>
-                                    <select required  id="reg_tipodoc" name="reg_tipodoc">
+                                    <select required id="reg_tipodoc" name="reg_tipodoc">
                                         <option value="">SELECCIONE TIPO</option>
                                         <option value="1">DNI</option>
                                         <option value="2">CARNET DE EXTRANJERIA</option>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="control-label"><b>Foto Perfil:</b></label>
-                                    <input type="file"  id="reg_foto" name="reg_foto" accept="image/*" />
+                                    <input type="file" id="reg_foto" name="reg_foto" accept="image/*" />
                                 </div>
                             </div>
                             <!--/form-group-->
@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="control-label"><b>Teléfono:</b></label>
-                                    <input type="text" id="reg_telefono" name="reg_telefono"  placeholder="+01 999 9999" class="form-control mask" data-inputmask="'mask':'+01 999 9999'">
+                                    <input type="text" id="reg_telefono" name="reg_telefono" placeholder="+01 999 9999" class="form-control mask" data-inputmask="'mask':'+01 999 9999'">
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="control-label"><b>Dirección:</b></label>
@@ -98,32 +98,35 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="control-label"><b>Referencia:</b></label>
-                                    <input parsley-type="alphanum"  id="reg_referencia" name="reg_referencia" type="text" class="form-control" placeholder="Ingresa referencia" />
+                                    <input parsley-type="alphanum" id="reg_referencia" name="reg_referencia" type="text" class="form-control" placeholder="Ingresa referencia" />
                                 </div>
                                 <div class="col-sm-3">
-                                    <label class="control-label"><b>Distrito:</b></label>
-                                    <select  id="reg_distrito" name="reg_distrito">
-                                        <option value="">SELECCIONE DISTRITO</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-3">
-                                    <label class="control-label"><b>Provincia:</b></label>
-                                    <select  id="reg_provincia" name="reg_provincia">
-                                        <option value="">SELECCIONE PROVINCIA</option>
+                                    <label class="control-label"><b>País:</b></label>
+                                    <select id="reg_pais" name="reg_pais">
+                                        <option value="1">PERÚ</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
                                     <label class="control-label"><b>Departamento:</b></label>
-                                    <select  id="reg_departamento" name="reg_departamento">
+                                    <select id="reg_departamento" name="reg_departamento">
                                         <option value="">SELECCIONE DEPARTAMENTO</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
-                                    <label class="control-label"><b>País:</b></label>
-                                    <select  id="reg_pais" name="reg_pais">
-                                        <option value="1">PERÚ</option>
+                                    <label class="control-label"><b>Provincia:</b></label>
+                                    <select id="reg_provincia" name="reg_provincia">
+                                        <option value="">SELECCIONE PROVINCIA</option>
                                     </select>
                                 </div>
+                                <div class="col-sm-3">
+                                    <label class="control-label"><b>Distrito:</b></label>
+                                    <select id="reg_distrito" name="reg_distrito">
+                                        <option value="">SELECCIONE DISTRITO</option>
+                                    </select>
+                                </div>
+
+
+
                             </div>
                             <!--/form-group-->
 
@@ -136,7 +139,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label class=" control-label"><b>Nombre de usuario</b></label>
-                                    <input type="text"  id="reg_user" name="reg_user" class="form-control" required parsley-rangelength="[5,10]" placeholder="Ingresa nombre usuario" />
+                                    <input type="text" id="reg_user" name="reg_user" class="form-control" required parsley-rangelength="[5,10]" placeholder="Ingresa nombre usuario" />
                                 </div>
 
                                 <div class="col-sm-4">
@@ -144,13 +147,11 @@
                                     <input type="password" id="reg_pass" name="reg_pass" class="form-control" required placeholder="Ingresa contraseña" />
                                 </div>
                                 <div class="col-sm-4">
-                                <label class="control-label"><b>Confirmar Contraseña</b></label>
+                                    <label class="control-label"><b>Confirmar Contraseña</b></label>
                                     <input type="password" class="form-control" required parsley-equalto="#reg_pass" placeholder="RE-Ingresa contraseña para confirmar" />
                                 </div>
 
                             </div>
-
-                         
                             <!--/form-group-->
                             <div class="form-group">
                                 <div class="col-sm-12 center">
@@ -159,21 +160,21 @@
                                     <button class="btn btn-default">Cancel</button>
                                 </div>
                             </div>
-                            <!--/form-group-->
-                            <div class="RespuestaAjax"></div>
-                        </form>
                     </div>
-                    <!--/porlets-content-->
+
+
+                    <!--/form-group-->
+                    <div class="RespuestaAjax"></div>
+                    </form>
                 </div>
-                <!--/block-web-->
+                <!--/porlets-content-->
             </div>
-            <!--/col-md-12-->
+            <!--/block-web-->
         </div>
-        <!--/row-->
+        <!--/col-md-12-->
     </div>
-    <!--\\\\\\\ container  end \\\\\\-->
+    <!--/row-->
+</div>
+<!--\\\\\\\ container  end \\\\\\-->
 </div>
 <!--\\\\\\\ content panel end \\\\\\-->
-
-
-
