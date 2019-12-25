@@ -71,6 +71,15 @@
 <script src="<?php echo SERVERURL; ?>vistas/plugins/tree-view/jquery.treeview.js"></script>
 <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/tree-view/demo.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/js/animated.js" type="text/javascript"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/jquery-3.1.1.min.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/material.min.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/ripples.min.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="<?php echo SERVERURL; ?>vistas/js/main.js"></script>
+<script>
+	$.material.init();
+</script>
+
 
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
