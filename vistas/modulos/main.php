@@ -2,7 +2,7 @@
 
     <div class="left_nav_slidebar">
         <ul>
-            <li class="left_nav_active theme_border"><a href="home"><i class="fa fa-tachometer"></i> Tablero General
+            <li id="tablerogeneral" class="left_nav_active theme_border"><a href="home"><i class="fa fa-tachometer"></i> Tablero General
                     <span class="left_nav_pointer"></span> </a>
 
             </li>
@@ -68,9 +68,9 @@
                     </li>
                 </ul>
             </li>
-            <li> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios <span class="plus"><i class="fa fa-plus"></i></span> </a>
-                <ul>
-                    <li>
+            <li id="usuarios"> <a href="javascript:void(0);"> <i class="fa fa-users"></i> Usuarios <span class="plus"><i class="fa fa-plus"></i></span> </a>
+                <ul id="ul_usuarios">
+                    <li id="nuevo_usuario">
                         <a href="registerUsers"> <span>&nbsp;</span>
                             <i class="fa fa-circle"></i> <b> Nuevo Usuario</b>
                         </a>
@@ -82,7 +82,7 @@
                     </li>
                     <li>
                         <a href="editProfile"> <span>&nbsp;</span>
-                            <i class="fa fa-circle"></i> <b> Editar Perfiles</b>
+                            <i class="fa fa-circle"></i> <b> Editar Accesos</b>
                         </a>
                     </li>
                     <li>

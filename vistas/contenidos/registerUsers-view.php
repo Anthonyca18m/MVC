@@ -1,3 +1,5 @@
+
+
 <div class="contentpanel">
     <!--\\\\\\\ contentpanel start\\\\\\-->
     <div class="pull-left breadcrumb_admin clear_both">
@@ -23,7 +25,9 @@
                         <h3 class="content-header">Registrar Nuevo Usuario</h3>
                     </div>
                     <div class="porlets-content">
-                        <form class="form-horizontal group-border-dashed FormularioAjax" data-form="save" method="POST" autocomplete="off" enctype="multipart/form-data">
+                        <form class="form-horizontal group-border-dashed FormularioAjax" 
+                        action="<?php echo SERVERURL; ?>ajax/userAjax.php" data-form="save" 
+                        method="POST" autocomplete="off" enctype="multipart/form-data">
                             <div class="form-group" style="padding:1%;">
                                 <div class="col-sm-12">
                                     <label class="control-label text"><b>
@@ -70,6 +74,27 @@
                             </div>
                             <!--/form-group-->
 
+                            <div class="form-group" style="padding:1%;">
+                                <div class="col-sm-12">
+                                    <label class="control-label text"><b>
+                                            <h3>Credenciales<h3>
+                                        </b></label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class=" control-label"><b>Nombre de usuario *</b></label>
+                                    <input type="text" id="reg_user" name="reg_user" class="form-control" required parsley-rangelength="[5,10]" placeholder="Ingresa nombre usuario" />
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label class="control-label"><b>Contraseña *</b></label>
+                                    <input type="password" id="reg_pass" name="reg_pass" class="form-control" required placeholder="Ingresa contraseña" />
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="control-label"><b>Confirmar Contraseña *</b></label>
+                                    <input type="password" class="form-control" required parsley-equalto="#reg_pass" placeholder="RE-Ingresa contraseña para confirmar" />
+                                </div>
+                            </div>
+                           
 
 
                             <div class="form-group" style="padding:1%;">
@@ -131,27 +156,6 @@
                             <!--/form-group-->
 
 
-                            <div class="form-group" style="padding:1%;">
-                                <div class="col-sm-12">
-                                    <label class="control-label text"><b>
-                                            <h3>Credenciales<h3>
-                                        </b></label>
-                                </div>
-                                <div class="col-sm-4">
-                                    <label class=" control-label"><b>Nombre de usuario</b></label>
-                                    <input type="text" id="reg_user" name="reg_user" class="form-control" required parsley-rangelength="[5,10]" placeholder="Ingresa nombre usuario" />
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <label class="control-label"><b>Contraseña</b></label>
-                                    <input type="password" id="reg_pass" name="reg_pass" class="form-control" required placeholder="Ingresa contraseña" />
-                                </div>
-                                <div class="col-sm-4">
-                                    <label class="control-label"><b>Confirmar Contraseña</b></label>
-                                    <input type="password" class="form-control" required parsley-equalto="#reg_pass" placeholder="RE-Ingresa contraseña para confirmar" />
-                                </div>
-
-                            </div>
                             <!--/form-group-->
                             <div class="form-group">
                                 <div class="col-sm-12 center">
@@ -178,3 +182,11 @@
 <!--\\\\\\\ container  end \\\\\\-->
 </div>
 <!--\\\\\\\ content panel end \\\\\\-->
+
+
+<script type="text/javascript">
+    $('#tablerogeneral').removeClass("left_nav_active");
+    $("#ul_usuarios").css("display", "block");
+    $('#usuarios').addClass("left_nav_active");
+    $('#nuevo_usuario').addClass("left_nav_active");
+</script>

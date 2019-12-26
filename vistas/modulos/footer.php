@@ -1,5 +1,3 @@
-
-
     <script src="<?php echo SERVERURL; ?>vistas/js/jquery-2.1.0.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/js/sweetalert2.min.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/js/bootstrap.min.js"></script>
@@ -11,8 +9,8 @@
     <script src="<?php echo SERVERURL; ?>vistas/plugins/data-tables/DT_bootstrap.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/plugins/data-tables/dynamic_table_init.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/plugins/edit-table/edit-table.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/plugins/kalendar/kalendar.js" ></script>
-<script src="<?php echo SERVERURL; ?>vistas/plugins/kalendar/edit-kalendar.js" ></script>
+    <script src="<?php echo SERVERURL; ?>vistas/plugins/kalendar/kalendar.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/plugins/kalendar/edit-kalendar.js"></script>
     <script>
         jQuery(document).ready(function() {
             EditableTable.init();
@@ -50,21 +48,6 @@
     <script src="<?php echo SERVERURL; ?>vistas/plugins/typeahead/typeahead.min.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/plugins/typeahead/typeaheadjs.min.js"></script>
     <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/toggle-switch/toggles.min.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/plugins/checkbox/zepto.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/plugins/checkbox/icheck.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/js/icheck-init.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/js/jquery.slimscroll.min.js"></script>
-    <script src="<?php echo SERVERURL; ?>vistas/js/icheck.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/js/form-components.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/input-mask/jquery.inputmask.min.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/input-mask/demo-mask.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/dropzone/dropzone.min.js"></script>
-    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/ckeditor/ckeditor.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/plugins/validation/parsley.min.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/plugins/file-uploader/js/tmpl.min.js"></script>
@@ -83,12 +66,12 @@
     <script src="<?php echo SERVERURL; ?>vistas/plugins/tree-view/jquery.cookie.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/plugins/tree-view/jquery.treeview.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/plugins/tree-view/demo.js"></script>
-<script src="<?php echo SERVERURL; ?>vistas/js/animated.js" ></script>
-<script src="<?php echo SERVERURL; ?>vistas/js/jquery-3.1.1.min.js"></script>
-<script src="<?php echo SERVERURL; ?>vistas/js/material.min.js"></script>
-<script src="<?php echo SERVERURL; ?>vistas/js/ripples.min.js"></script>
-<script src="<?php echo SERVERURL; ?>vistas/js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="<?php echo SERVERURL; ?>vistas/js/main.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/animated.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/jquery-3.1.1.min.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/material.min.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/ripples.min.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/main.js"></script>
     <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/tree-view/demo.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/js/script.min.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/js/animated.js" type="text/javascript"></script>
@@ -245,10 +228,23 @@
     <script src="<?php echo SERVERURL; ?>vistas/js/jquery.nicescroll.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/js/edit-graph.js"></script>
 
+    <script src="<?php echo SERVERURL; ?>vistas/plugins/checkbox/zepto.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/plugins/checkbox/icheck.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/icheck-init.js"></script>
+    <script src="<?php echo SERVERURL; ?>vistas/js/jquery.slimscroll.min.js"></script>
 
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/js/form-components.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/input-mask/jquery.inputmask.min.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/input-mask/demo-mask.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/dropzone/dropzone.min.js"></script>
+    <script type="text/javascript" src="<?php echo SERVERURL; ?>vistas/plugins/ckeditor/ckeditor.js"></script>
 
-
-    <script src="<?php echo SERVERURL; ?>vistas/js/jquery-2.1.0.js"></script>
+    <!-- <script src="<?php echo SERVERURL; ?>vistas/js/jquery-2.1.0.js"></script> -->
     <script src="<?php echo SERVERURL; ?>vistas/js/bootstrap.min.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/js/common-script.js"></script>
     <script src="<?php echo SERVERURL; ?>vistas/js/jquery.slimscroll.min.js"></script>
@@ -269,42 +265,43 @@
         });
     </script>
 
-<script>
-    $(".letras").keypress(function(key) {
-        window.console.log(key.charCode)
-        if ((key.charCode < 97 || key.charCode > 122) //letras mayusculas
-            &&
-            (key.charCode < 65 || key.charCode > 90) //letras minusculas
-            &&
-            (key.charCode != 45) //retroceso
-            &&
-            (key.charCode != 241) //ñ
-            &&
-            (key.charCode != 209) //Ñ
-            &&
-            (key.charCode != 32) //espacio
-            &&
-            (key.charCode != 225) //á
-            &&
-            (key.charCode != 233) //é
-            &&
-            (key.charCode != 237) //í
-            &&
-            (key.charCode != 243) //ó
-            &&
-            (key.charCode != 250) //ú
-            &&
-            (key.charCode != 193) //Á
-            &&
-            (key.charCode != 201) //É
-            &&
-            (key.charCode != 205) //Í
-            &&
-            (key.charCode != 211) //Ó
-            &&
-            (key.charCode != 218) //Ú
+    <script>
+        $(".letras").keypress(function(key) {
+            window.console.log(key.charCode)
+            if ((key.charCode < 97 || key.charCode > 122) //letras mayusculas
+                &&
+                (key.charCode < 65 || key.charCode > 90) //letras minusculas
+                &&
+                (key.charCode != 45) //retroceso
+                &&
+                (key.charCode != 241) //ñ
+                &&
+                (key.charCode != 209) //Ñ
+                &&
+                (key.charCode != 32) //espacio
+                &&
+                (key.charCode != 225) //á
+                &&
+                (key.charCode != 233) //é
+                &&
+                (key.charCode != 237) //í
+                &&
+                (key.charCode != 243) //ó
+                &&
+                (key.charCode != 250) //ú
+                &&
+                (key.charCode != 193) //Á
+                &&
+                (key.charCode != 201) //É
+                &&
+                (key.charCode != 205) //Í
+                &&
+                (key.charCode != 211) //Ó
+                &&
+                (key.charCode != 218) //Ú
 
-        )
-            return false;
-    });
-</script>
+            )
+                return false;
+        });
+    </script>
+        <script src="<?php echo SERVERURL; ?>vistas/js/icheck.js"></script>
