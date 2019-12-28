@@ -52,7 +52,6 @@
                                         <option value="">SELECCIONE GENÉRO</option>
                                         <option value="1">MUJER</option>
                                         <option value="2">HOMBRE</option>
-                                        <option value="3">NO DEFINIDO</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-3">
@@ -91,7 +90,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <label class="control-label"><b>Confirmar Contraseña *</b></label>
-                                    <input type="password" class="form-control" required parsley-equalto="#reg_pass" placeholder="RE-Ingresa contraseña para confirmar" />
+                                    <input type="password" class="form-control" required parsley-equalto="#reg_pass" id="reg_pass2" name="reg_pass2" placeholder="RE-Ingresa contraseña para confirmar" />
                                 </div>
                             </div>
                            

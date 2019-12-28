@@ -72,22 +72,27 @@
                 <ul id="ul_usuarios">
                     <li id="nuevo_usuario">
                         <a href="registerUsers"> <span>&nbsp;</span>
-                            <i class="fa fa-circle"></i> <b> Nuevo Usuario</b>
+                            <i class="fa fa-circle"></i><b>Nuevo Usuario</b>
+                        </a>
+                    </li>
+                    <li id="nuevo_adm">
+                        <a href="registerAdm"> <span>&nbsp;</span>
+                            <i class="fa fa-circle"></i> <b>Nuevo ADM</b>
                         </a>
                     </li>
                     <li>
                         <a href="listUsers"> <span>&nbsp;</span>
-                            <i class="fa fa-circle"></i> <b> Lista de Usuarios</b>
+                            <i class="fa fa-circle"></i> <b>Lista de Usuarios</b>
                         </a>
                     </li>
                     <li>
                         <a href="editProfile"> <span>&nbsp;</span>
-                            <i class="fa fa-circle"></i> <b> Editar Accesos</b>
+                            <i class="fa fa-circle"></i> <b>Editar Accesos</b>
                         </a>
                     </li>
                     <li>
                         <a href="reportUsers"> <span>&nbsp;</span>
-                            <i class="fa fa-circle"></i> <b> Reporte de Usuarios</b>
+                            <i class="fa fa-circle"></i> <b>Reporte de Usuarios</b>
                         </a>
                     </li>
                 </ul>

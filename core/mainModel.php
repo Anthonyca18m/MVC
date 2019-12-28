@@ -1,82 +1,160 @@
 <?php
 
-    if ($peticionAjax) {
-        require_once("../core/configAPP.php");
-    } else {
-        require_once("./core/configAPP.php");
+if ($peticionAjax) {
+    require_once("../core/configAPP.php");
+} else {
+    require_once("./core/configAPP.php");
+}
+
+
+class mainModel
+{
+
+    protected function Conexion()
+    {
+        $enlace  = new PDO(SGBD, DB_USER, DB_PASS);
+        return $enlace;
     }
-    
 
-    class mainModel{
+    protected function Execute_sql_simple($sql)
+    {
+        $response = self::Conexion()->prepare($sql);
+        $response->execute();
+        return $response;
+    }
 
-        protected function Conexion(){
-            $link  = new PDO(SGBD, DB_USER, DB_PASS);
-            return $link;
+    // protected function agregarUsuarios($datos)
+    // {
+    //     $sql = self::Conexion()->prepare("INSERT INTO user( Ucodigo,
+    //                                                         idTipoUsuario, 
+    //                                                         Uname,
+    //                                                         Upaterno, 
+    //                                                         Umaterno, 
+    //                                                         Ucorreo, 
+    //                                                         Upass, 
+    //                                                         Uuser, 
+    //                                                         idDocumento, 
+    //                                                         Udocumento, 
+    //                                                         Ugenero, 
+    //                                                         UfotoPerfil, 
+    //                                                         Ucelular, 
+    //                                                         Utelefono, 
+    //                                                         UfechaRegistro, 
+    //                                                         UDireccion, 
+    //                                                         idDistrito, 
+    //                                                         accesos, 
+    //                                                         idEstado) VALUES (  :Ucodigo,
+    //                                                                             :Utipousuario,
+    //                                                                             :Uname,
+    //                                                                             :Upaterno,
+    //                                                                             :Umaterno,
+    //                                                                             :Ucorreo,
+    //                                                                             :Upass,
+    //                                                                             :Uuser,
+    //                                                                             :Utipodocumento,
+    //                                                                             :Udocumento,
+    //                                                                             :Ugenero,
+    //                                                                             :Ufoto,
+    //                                                                             :Ucelular,
+    //                                                                             :Utelefono,
+    //                                                                             NOW(),
+    //                                                                             :Udireccion,
+    //                                                                             :Udistrito,
+    //                                                                             :Uaccesos,
+    //                                                                             :Uestado) ");
+    //     $sql->bindParam(":Ucodigo", intval($datos['Ucodigo']));
+    //     $sql->bindParam(":Utipousuario", intval($datos['Utipousuario']));
+    //     $sql->bindParam(":Uname",       $datos['Uname']);
+    //     $sql->bindParam(":Upaterno",    $datos['Upaterno']);
+    //     $sql->bindParam(":Umaterno",    $datos['Umaterno']);
+    //     $sql->bindParam(":Ucorreo",     $datos['Ucorreo']);
+    //     $sql->bindParam(":Upass",       $datos['Upass']);
+    //     $sql->bindParam(":Uuser",       $datos['Uuser']);
+    //     $sql->bindParam(":Utipodocumento", intval($datos['Utipodocumento']));
+    //     $sql->bindParam(":Udocumento",  $datos['Udocumento']);
+    //     $sql->bindParam(":Ugenero",     intval($datos['Ugenero']));
+    //     $sql->bindParam(":Ufoto",       $datos['Ufoto']);
+    //     $sql->bindParam(":Ucelular",    $datos['Ucelular']);
+    //     $sql->bindParam(":Utelefono",   $datos['Utelefono']);
+    //     $sql->bindParam(":Udireccion",  $datos['Udireccion']);
+    //     $sql->bindParam(":Udistrito",   $datos['Udistrito']);
+    //     $sql->bindParam(":Uaccesos",    $datos['Uaccesos']);
+    //     $sql->bindParam(":Uestado",     intval($datos['Uestado']));
+
+    //     $sql->execute();
+    //     return $sql;
+    // }
+
+    // protected function eliminarUsuario($id){
+    //     $sql = self::Conexion()->prepare("DELETE FROM user WHERE idUser = :Codigo");
+
+    //     $sql->bindParam(":Codigo", intval($id));
+    //     $sql->execute();
+    //     return $sql;
+    // }
+
+    public function encryption($string)
+    {
+        $salida = FALSE;
+        $key = hash('sha256', SECRET_KEY);
+        $iv = substr(hash('sha256', SECRET_IV), 0, 16);
+        $salida = openssl_encrypt($string, METHOD, $key, 0, $iv);
+
+        return $salida;
+    }
+
+    protected function decryption($string)
+    {
+        $key = hash('sha256', SECRET_KEY);
+        $iv = substr(hash('sha256', SECRET_IV), 0, 16);
+        $salida = openssl_encrypt(base64_decode($string), METHOD, $key, 0, $iv);
+
+        return $salida;
+    }
+
+    protected function generarCodigoRR($letra, $length, $num)
+    {
+        for ($i = 0; $i < $length; $i++) {
+
+            $number = rand(0, 9);
+            $letra .= $number;
         }
+        return $letra . "-" . $num;
+    }
 
-        protected function Execute_sql_simple($sql){
-            $response = self::Conexion()->prepare($sql);
-            $response->execute();
-            return $response;
-        }
+    protected function cleanString($cadena)
+    {
+        $cadena = trim($cadena);
+        $cadena = stripslashes($cadena);
+        $cadena = str_ireplace('<script>', "", $cadena);
+        $cadena = str_ireplace('</script>', "", $cadena);
+        $cadena = str_ireplace('<script src', "", $cadena);
+        $cadena = str_ireplace('<script type=', "", $cadena);
+        $cadena = str_ireplace('SELECT * FROM ', "", $cadena);
+        $cadena = str_ireplace('DROP DATABASE', "", $cadena);
+        $cadena = str_ireplace('DELETE DATABASE', "", $cadena);
+        $cadena = str_ireplace('DELETE FROM', "", $cadena);
+        $cadena = str_ireplace('INSERT INTO', "", $cadena);
+        $cadena = str_ireplace('VALUES', "", $cadena);
+        $cadena = str_ireplace('--', "", $cadena);
+        $cadena = str_ireplace('PREPARE', "", $cadena);
+        $cadena = str_ireplace('{}', "", $cadena);
+        $cadena = str_ireplace('[]', "", $cadena);
+        $cadena = str_ireplace(']', "", $cadena);
+        $cadena = str_ireplace('[', "", $cadena);
+        $cadena = str_ireplace('==', "", $cadena);
+        $cadena = str_ireplace('=', "", $cadena);
+        $cadena = str_ireplace('WHERE', "", $cadena);
+        $cadena = str_ireplace(';', "", $cadena);
 
-        public function encryption($string){
-            $salida = FALSE;
-            $key = hash('sha256', SECRET_KEY);
-            $iv = substr(hash('sha256', SECRET_IV), 0, 16);
-            $salida = openssl_encrypt($string, METHOD, $key, 0, $iv);
-            
-            return $salida;
-        }
-
-        protected function decryption($string){
-            $key = hash('sha256', SECRET_KEY);
-            $iv = substr(hash('sha256', SECRET_IV), 0, 16);
-            $salida = openssl_encrypt(base64_decode($string), METHOD, $key, 0, $iv);
-
-            return $salida;
-        }
-
-        protected function generarCodigoRR($letra, $length, $num){
-            for ($i=0; $i < $length; $i++) { 
-                
-                $number = rand(0,9);
-                $letra .= $number;
-            }
-            return $letra."-".$num;
-        }
-
-        protected function cleanString($cadena){
-            $cadena = trim($cadena);
-            $cadena = stripslashes($cadena);
-            $cadena = str_ireplace('<script>',"", $cadena);
-            $cadena = str_ireplace('</script>',"", $cadena);
-            $cadena = str_ireplace('<script src',"", $cadena);
-            $cadena = str_ireplace('<script type=',"", $cadena);
-            $cadena = str_ireplace('SELECT * FROM ',"", $cadena);
-            $cadena = str_ireplace('DROP DATABASE',"", $cadena);
-            $cadena = str_ireplace('DELETE DATABASE',"", $cadena);
-            $cadena = str_ireplace('DELETE FROM',"", $cadena);
-            $cadena = str_ireplace('INSERT INTO',"", $cadena);
-            $cadena = str_ireplace('VALUES',"", $cadena);
-            $cadena = str_ireplace('--',"", $cadena);
-            $cadena = str_ireplace('PREPARE',"", $cadena);
-            $cadena = str_ireplace('{}',"", $cadena);
-            $cadena = str_ireplace('[]',"", $cadena);
-            $cadena = str_ireplace(']',"", $cadena);
-            $cadena = str_ireplace('[',"", $cadena);
-            $cadena = str_ireplace('==',"", $cadena);
-            $cadena = str_ireplace('=',"", $cadena);
-            $cadena = str_ireplace('WHERE',"", $cadena);
-            $cadena = str_ireplace(';',"", $cadena);
-
-            return $cadena;
-        }
+        return $cadena;
+    }
 
 
-        protected function sweetAlert($datos){
-            if($datos['Alert']== "AlertaRight"){
-                $alerta = "
+    protected function sweetAlert($datos)
+    {
+        if ($datos['Alert'] == "AlertaRight") {
+            $alerta = "
                      <script>
                         const Toast = Swal.mixin({
                             toast: true,
@@ -91,54 +169,54 @@
                         })
                         
                         Toast.fire({
-                            icon: '".$datos["Tipo"]."',
-                            title: '".$datos["Mensaje"]."'
+                            icon: '" . $datos["Tipo"] . "',
+                            title: '" . $datos["Mensaje"] . "'
                         })
                      </script>
                 ";
-            }elseif ($datos["Alert"] == "AlertaSimple") {
-                $alerta = "
+        } elseif ($datos["Alert"] == "AlertSimple") {
+            $alerta = "
                     <script>
                         Swal.fire(
-                            '".$datos["Titulo"]."',
-                            '".$datos["Texto"]."',
-                            '".$datos["Tipo"]."'
+                            '" . $datos["Titulo"] . "',
+                            '" . $datos["Texto"] . "',
+                            '" . $datos["Tipo"] . "'
                           )
                     </script>
                 ";
-            }elseif ($datos["Alert"] == "AlertRecarga") {
-                $alerta = "
+        } elseif ($datos["Alert"] == "AlertRecarga") {
+            $alerta = "
                     <script>
                         Swal.fire({
-                            title: '".$datos["Titulo"]."',
-                            text: '".$datos["Texto"]."',
-                            icon: '".$datos["Tipo"]."',
+                            title: '" . $datos["Titulo"] . "',
+                            text: '" . $datos["Texto"] . "',
+                            icon: '" . $datos["Tipo"] . "',
                             confirmButtonText: 'Aceptar'
                         }).then((result) => {
                             location.reload();
                         })
                     </script>
                 ";
-            }elseif ($datos["Alert"] == "AlertLimpiar") {
-                $alerta = "
+        } elseif ($datos["Alert"] == "AlertLimpiar") {
+            $alerta = "
                     <script>
                         Swal.fire({
-                            title: '".$datos["Titulo"]."',
-                            text: '".$datos["Texto"]."',
-                            icon: '".$datos["Tipo"]."',
+                            title: '" . $datos["Titulo"] . "',
+                            text: '" . $datos["Texto"] . "',
+                            icon: '" . $datos["Tipo"] . "',
                             confirmButtonText: 'Aceptar'
                         }).then((result) => {
                           $('.FormulariosAjax')[0].reset;
                         })
                     </script>
                 ";
-            }elseif ($datos["Alert"] == "AlertLoader") {
-                $alerta="
+        } elseif ($datos["Alert"] == "AlertLoader") {
+            $alerta = "
                 <script>
                     let timerInterval
                     Swal.fire({
-                    title: '".$datos["Titulo"]."',
-                    html: '".$datos["Texto"]."',
+                    title: '" . $datos["Titulo"] . "',
+                    html: '" . $datos["Texto"] . "',
                     timer: 2000,
                     timerProgressBar: true,
                     onBeforeOpen: () => {
@@ -161,8 +239,8 @@
                     })
                 </script>
                 ";
-            }elseif ($datos["Alert"] == "AlertIP") {
-                $alerta = "
+        } elseif ($datos["Alert"] == "AlertIP") {
+            $alerta = "
                     <script>
                         const ipAPI = '//api.ipify.org?format=json'
 
@@ -187,30 +265,30 @@
                         }])
                     </script>
                 ";
-            }elseif ($datos["Alert"] == "AlertQuestion") {
-                $alerta = "
+        } elseif ($datos["Alert"] == "AlertQuestion") {
+            $alerta = "
                     <script>
                     Swal.fire({
-                        title: '".$datos["Titulo"]."',
-                        text: '".$datos["Texto"]."',
-                        icon: '".$datos["Tipo"]."',
+                        title: '" . $datos["Titulo"] . "',
+                        text: '" . $datos["Texto"] . "',
+                        icon: '" . $datos["Tipo"] . "',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: '".$datos["TextoButtonConfirm"]."'
+                        confirmButtonText: '" . $datos["TextoButtonConfirm"] . "'
                       }).then((result) => {
                         if (result.value) {
                           Swal.fire(
-                            '".$datos["TituloConfirm"]."',
-                            '".$datos["TextoConfirm"]."',
-                            '".$datos["TipoConfirm"]."'
+                            '" . $datos["TituloConfirm"] . "',
+                            '" . $datos["TextoConfirm"] . "',
+                            '" . $datos["TipoConfirm"] . "'
                           )
                         }
                       })
                     </script>
                 ";
-            }elseif ($datos["Alert"] == "AlertQuestionResponse") {
-                $alerta ="
+        } elseif ($datos["Alert"] == "AlertQuestionResponse") {
+            $alerta = "
                     <script>
                     const swalWithBootstrapButtons = Swal.mixin({
                         customClass: {
@@ -221,49 +299,47 @@
                       })
                       
                       swalWithBootstrapButtons.fire({
-                        title: '".$datos["Titulo"]."',
-                        text: '".$datos["Texto"]."',
-                        icon: '".$datos["Tipo"]."',
+                        title: '" . $datos["Titulo"] . "',
+                        text: '" . $datos["Texto"] . "',
+                        icon: '" . $datos["Tipo"] . "',
                         showCancelButton: true,
-                        confirmButtonText: '".$datos["TextoButtonConfirm"]."',
-                        cancelButtonText: '".$datos["TextoButtonCancel"]."',
+                        confirmButtonText: '" . $datos["TextoButtonConfirm"] . "',
+                        cancelButtonText: '" . $datos["TextoButtonCancel"] . "',
                         reverseButtons: true
                       }).then((result) => {
                         if (result.value) {
                           swalWithBootstrapButtons.fire(
-                            '".$datos["TituloResponseConfirm"]."',
-                            '".$datos["TextoResponseConfirm"]."',
-                            '".$datos["TipoResponseConfirm"]."'
+                            '" . $datos["TituloResponseConfirm"] . "',
+                            '" . $datos["TextoResponseConfirm"] . "',
+                            '" . $datos["TipoResponseConfirm"] . "'
                           )
                         } else if (
                           /* Read more about handling dismissals below */
                           result.dismiss === Swal.DismissReason.cancel
                         ) {
                           swalWithBootstrapButtons.fire(
-                            '".$datos["TituloResponseCancel"]."',
-                            '".$datos["TextoResponseCancel"]."',
-                            '".$datos["TipoResponseCancel"]."'
+                            '" . $datos["TituloResponseCancel"] . "',
+                            '" . $datos["TextoResponseCancel"] . "',
+                            '" . $datos["TipoResponseCancel"] . "'
                           )
                         }
                       })
                     </script>
                 ";
-            }elseif ($datos["Alert"] == "AlertImage") {
-                $alerta = "
+        } elseif ($datos["Alert"] == "AlertImage") {
+            $alerta = "
                     <script>
                     Swal.fire({
-                        title: '".$datos["Titulo"]."',
-                        text: '".$datos["Texto"]."',
-                        imageUrl: '".$datos["Image"]."',
-                        imageWidth: ".$datos["ImageWidth"].",
-                        imageHeight: ".$datos["ImageHeight"].",
-                        imageAlt: '".$datos["ImagenAlt"]."',
+                        title: '" . $datos["Titulo"] . "',
+                        text: '" . $datos["Texto"] . "',
+                        imageUrl: '" . $datos["Image"] . "',
+                        imageWidth: " . $datos["ImageWidth"] . ",
+                        imageHeight: " . $datos["ImageHeight"] . ",
+                        imageAlt: '" . $datos["ImagenAlt"] . "',
                       })
                     </script>
                 ";
-            }
-            return $alerta;
         }
-        
+        return $alerta;
     }
-    
+}
